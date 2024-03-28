@@ -21,6 +21,11 @@ Now, just run the scripts with the following order:
 * After reboot, again open a terminal and run `cd RealSense-Jetson`
 * Lastly, run `sh build_pyrealsense2_and_SDK.sh`
 
+You'll need to add the Python path to the librealsense folder so it can get the compiled libraries. Assuming you're in a `Repo` folder in your home directory, it will look something like this:
+```
+export PYTHONPATH="$PYTHONPATH:/home/nvidia/Repos/librealsense/build/release"
+```
+
 **Note:** 'initialize_Jetson.sh' script will clean some unnecessary stuff, upgrade the system and install a swap file for further operations that require more ram than the Jetson module has. Eventually, it reboots the system to make sure changes are in effect. Whenever the command promt requires, enter your password.
 
 **Note:** The second operation that is done by 'sh build_pyrealsense2_and_SDK.sh' builds from source. That means that the operation will take a long time.
