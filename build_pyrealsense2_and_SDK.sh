@@ -19,7 +19,7 @@ sleep 2
 cd build
 sed -i '3iset(CMAKE_CUDA_COMPILER /usr/local/cuda/bin/nvcc)\' ../CMakeLists.txt
 # Set the flags so that librealsense is compatible with python
-cmake ../librealsense cmake ../ -DFORCE_RSUSB_BACKEND=ON -DBUILD_PYTHON_BINDINGS:bool=true -DPYTHON_EXECUTABLE=/usr/bin/python3.9 -DCMAKE_BUILD_TYPE=release -DBUILD_EXAMPLES=true -DBUILD_GRAPHICAL_EXAMPLES=true -DBUILD_WITH_CUDA:bool=true
+cmake ../librealsense cmake ../ -DFORCE_RSUSB_BACKEND=ON -DBUILD_PYTHON_BINDINGS:bool=true -DPYTHON_EXECUTABLE=/usr/bin/python3.8 -DCMAKE_BUILD_TYPE=release -DBUILD_EXAMPLES=true -DBUILD_GRAPHICAL_EXAMPLES=true -DBUILD_WITH_CUDA:bool=true
 
 sudo make uninstall && sudo make clean
 echo "[INFO] Building is starting, it will take a long time like half an hour or more!"
@@ -28,7 +28,8 @@ sudo make -j1 && sudo make install
 
 echo 'export PATH=$PATH:~/.local/bin' >> ~/.bashrc
 echo 'export PYTHONPATH=$PYTHONPATH:/usr/local/lib' >> ~/.bashrc
-echo 'export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.9/pyrealsense2' >> ~/.bashrc
+echo 'export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.8/pyrealsense2' >> ~/.bashrc
+echo 'export export PYTHONPATH=$PYTHONPATH:/home/nvidia/Repos/librealsense/build/release' >> ~/.bashrc
 
 sudo cp ~/Repos/librealsense/config/99-realsense-libusb.rules /etc/udev/rules.d/ 
 sudo cp ~/Repos/librealsense/config/99-realsense-d4xx-mipi-dfu.rules /etc/udev/rules.d/
